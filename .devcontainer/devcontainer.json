@@ -1,19 +1,24 @@
 {
+  // 1. Base Image: Specify the starting environment (Python 3.11)
   "image": "mcr.microsoft.com/devcontainers/python:3.11-bullseye",
-  "name": "Week 1 - Incident API",
+  "name": "Classroom Assignment Environment with Continue AI",
 
+
+  // This script handles all installations AND the secure file modification.
   "postCreateCommand": "bash .devcontainer/setup.sh", 
 
+  // 3. Environment Variables: Non-secret variables for student use.
   "remoteEnv": {
       "COURSE_SEMESTER": "SPRING_2025-2026"
   },
 
+  // 4. VS Code Customizations: Extensions and settings for the IDE.
   "customizations": {
     "vscode": {
       "extensions": [
-        "ms-python.python",
-        "ms-python.vscode-pylance",
-        "continue.continue"
+        "ms-python.python",          // Essential Python language support
+        "ms-python.vscode-pylance",  // Pylance for superior IntelliSense
+        "continue.continue"          // The Continue VS Code Extension
       ],
       "settings": {
         "files.autoSave": "afterDelay",
@@ -21,12 +26,18 @@
         "editor.wordWrap": "on",
         "python.defaultInterpreterPath": "/usr/local/bin/python",
         
+        // --- ADDED: DISABLE GITHUB COPILOT COMPLETELY ---
+        // Prevents inline code suggestions
         "github.copilot.enable": {
             "*": false, 
             "plaintext": false 
         },
         "github.copilot.editor.enableAutoCompletions": false,
+        
+        // Disables the Agent Mode feature (the main root of the "Agent Sessions" panel)
         "chat.agent.enabled": false,
+        
+        // Hides the "Agent Sessions" icon from the Activity Bar
         "workbench.activityBar.hiddenExtensionItemIds": [
             "github.copilot",
             "github.copilot.chat"
@@ -35,11 +46,12 @@
     }
   },
   
+  // 5. Port Configuration 
   "portsAttributes": {
-    "8000": {
-      "label": "FastAPI Server",
+    "8080": {
+      "label": "Web Application",
       "onAutoForward": "openBrowser"
     }
   },
-  "forwardPorts": [8000]
+  "forwardPorts": [8080, 5000]
 }
