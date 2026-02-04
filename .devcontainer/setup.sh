@@ -11,7 +11,7 @@ CONFIG_DIR="$HOME/.continue"
 CONFIG_FILE="$CONFIG_DIR/config.yaml"
 
 # Get the secure API Key from the environment
-API_KEY="$HELICONE_API_KEY"
+API_KEY="sk-helicone-rp7cuqy-peuupey-qeyv7vi-cv6kliq"
 
 # --- 1. INSTALLATION ---
 
